@@ -9,10 +9,14 @@
 I am a student of systems engineering and pure mathematics with a focus on mathematical engineering.
 
 ### GitHub Stats:
+
+
 <div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=JocsanRueda&hide_title=false&hide_rank=false&show_icons=true&include_all_commits=true&count_private=true&disable_animations=false&theme=dracula&locale=en&hide_border=false" height="150" alt="stats graph"  />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs?username=JocsanRueda&locale=en&hide_title=false&layout=compact&card_width=320&langs_count=5&theme=dracula&hide_border=false" height="150" alt="languages graph"  />
+  <img src="https://github-readme-stats.vercel.app/api?username=JocsanRueda&theme=dark&hide_border=false&include_all_commits=false&count_private=false" alt="GitHub Stats"/>
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=JocsanRueda&theme=dark&hide_border=false" alt="GitHub Streak Stats"/>
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=JocsanRueda&theme=dark&hide_border=false&include_all_commits=false&count_private=false&layout=compact" alt="Top Languages"/>
 </div>
+
 
 
 
