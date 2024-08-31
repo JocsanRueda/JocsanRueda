@@ -12,9 +12,9 @@ I am a student of systems engineering and pure mathematics with a focus on mathe
 
 
 <div align="center">
-  <img width="400px" src="https://github-readme-stats.vercel.app/api?username=JocsanRueda&theme=dark&hide_border=false&include_all_commits=false&count_private=false" alt="GitHub Stats"/>
-  <img width="440px" src="https://github-readme-streak-stats.herokuapp.com/?user=JocsanRueda&theme=dark&hide_border=false" alt="GitHub Streak Stats"/> </br>
-  <img width="300px" src="https://github-readme-stats.vercel.app/api/top-langs/?username=JocsanRueda&theme=dark&hide_border=false&include_all_commits=false&count_private=false&layout=compact" alt="Top Languages"/>
+  <img width="380" src="https://github-readme-stats.vercel.app/api?username=JocsanRueda&theme=dark&hide_border=false&include_all_commits=false&count_private=false" alt="GitHub Stats"/>
+  <img width="420px" src="https://github-readme-streak-stats.herokuapp.com/?user=JocsanRueda&theme=dark&hide_border=false" alt="GitHub Streak Stats"/> </br>
+  <img width="280px" src="https://github-readme-stats.vercel.app/api/top-langs/?username=JocsanRueda&theme=dark&hide_border=false&include_all_commits=false&count_private=false&layout=compact" alt="Top Languages"/>
 </div>
 
 
