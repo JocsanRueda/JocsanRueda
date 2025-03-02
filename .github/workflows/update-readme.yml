@@ -21,11 +21,14 @@ jobs:
           curl -o streak.svg "https://github-readme-streak-stats.herokuapp.com/?user=${OTHER_GH_USER}&theme=dark"
           curl -o langs.svg "https://github-readme-stats.vercel.app/api/top-langs/?username=${OTHER_GH_USER}&count_private=true&layout=compact&theme=dark"
 
-      - name: Clone Private Repository (if needed)
-        env:
-          GH_PAT: ${{ secrets.GH_PAT }}  # Este es el token creado con la cuenta JRueda2001
+      - name: Set up Git Authentication
         run: |
-          git clone https://${GH_PAT}@github.com/JRueda2001/RepoPrivado.git private_repo
+          git config --global credential.helper store
+          echo "https://${GH_PAT}:x-oauth-basic" > ~/.git-credentials
+
+      - name: Clone Private Repository (if needed)
+        run: |
+          git clone https://github.com/JRueda2001/RepoPrivado.git private_repo
           cp private_repo/algun_archivo.svg .  # Si necesitas archivos del repo privado
 
       - name: Update README
