@@ -26,11 +26,12 @@ jobs:
           sed -i 's|<img width="280px".*|<img width="280px" src="./langs.svg" alt="Top Languages"/>|' README.md
 
       - name: Commit and Push Changes
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git remote set-url origin https://JocsanRueda:${GH_PAT}@github.com/JocsanRueda/JocsanRueda.git
           git add README.md stats.svg streak.svg langs.svg
           git commit -m "Updated GitHub Stats in README"
-          git push
-        env:
-          GH_PAT: ${{ secrets.GH_PAT }}
+          git push origin main
