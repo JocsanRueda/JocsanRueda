@@ -1,0 +1,36 @@
+name: Update GitHub Stats in README
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Se ejecuta todos los días a medianoche
+  workflow_dispatch:  # Permite ejecución manual desde GitHub Actions
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Fetch GitHub Stats
+        run: |
+          curl -o stats.svg "https://github-readme-stats.vercel.app/api?username=JocsanRueda&count_private=true&theme=dark"
+          curl -o streak.svg "https://github-readme-streak-stats.herokuapp.com/?user=JocsanRueda&theme=dark"
+          curl -o langs.svg "https://github-readme-stats.vercel.app/api/top-langs/?username=JocsanRueda&count_private=true&layout=compact&theme=dark"
+
+      - name: Update README
+        run: |
+          sed -i 's|<img width="380".*|<img width="380" src="./stats.svg" alt="GitHub Stats"/>|' README.md
+          sed -i 's|<img width="420px".*|<img width="420px" src="./streak.svg" alt="GitHub Streak Stats"/>|' README.md
+          sed -i 's|<img width="280px".*|<img width="280px" src="./langs.svg" alt="Top Languages"/>|' README.md
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md stats.svg streak.svg langs.svg
+          git commit -m "Updated GitHub Stats in README"
+          git push
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
