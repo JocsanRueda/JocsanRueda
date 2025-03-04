@@ -25,4 +25,4 @@ jobs:
         env:
           GH_PAT_JRUEDA: ${{ secrets.GH_PAT_JRUEDA }}
         run: |
-          echo"${GH_PAT_JRUEDA}"
+          echo ${GH_PAT_JRUEDA}
