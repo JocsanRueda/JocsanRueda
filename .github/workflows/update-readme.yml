@@ -15,16 +15,23 @@ jobs:
 
       - name: Fetch GitHub Stats from JRueda2001
         env:
-          OTHER_GH_USER: "JRueda2001"  # Usar el nombre de usuario de la otra cuenta
+          OTHER_GH_USER: "JRueda2001"  # Usuario de la otra cuenta
         run: |
           curl -o stats.svg "https://github-readme-stats.vercel.app/api?username=${OTHER_GH_USER}&count_private=true&theme=dark"
           curl -o streak.svg "https://github-readme-streak-stats.herokuapp.com/?user=${OTHER_GH_USER}&theme=dark"
           curl -o langs.svg "https://github-readme-stats.vercel.app/api/top-langs/?username=${OTHER_GH_USER}&count_private=true&layout=compact&theme=dark"
 
       - name: Clone Private Repository (if needed)
+        env:
+          GH_PAT_JRUEDA: ${{ secrets.GH_PAT_JRUEDA }}
         run: |
-          git clone https://${GH_PAT}@github.com/JRueda2001/RepoPrivado.git private_repo
-          cp private_repo/algun_archivo.svg .  # Si necesitas archivos del repo privado
+          if git ls-remote https://JRueda2001:${GH_PAT_JRUEDA}@github.com/GuabaBIT/choyce-api.git &> /dev/null; then
+            echo "Access granted. Cloning repository..."
+            git clone https://JRueda2001:${GH_PAT_JRUEDA}@github.com/GuabaBIT/choyce-api.git private_repo
+          else
+            echo "ERROR: No access to the private repository."
+            exit 1
+          fi
 
       - name: Update README
         run: |
@@ -41,4 +48,4 @@ jobs:
           git remote set-url origin https://JocsanRueda:${GH_PAT}@github.com/JocsanRueda/JocsanRueda.git
           git add README.md stats.svg streak.svg langs.svg
           git commit -m "Updated GitHub Stats in README" || echo "No changes to commit"
-          git push origin main
+          git push origin main || echo "No changes to push"
