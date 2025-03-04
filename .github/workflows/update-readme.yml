@@ -25,33 +25,4 @@ jobs:
         env:
           GH_PAT_JRUEDA: ${{ secrets.GH_PAT_JRUEDA }}
         run: |
-          if git ls-remote https://JRueda2001:${GH_PAT_JRUEDA}@github.com/GuabaBIT/choyce-api.git &> /dev/null; then
-            echo "✅ Access to the private repository confirmed."
-          else
-            echo "❌ ERROR: No access to the private repository."
-            exit 1
-          fi
-
-      - name: Clone Private Repository (if access is confirmed)
-        env:
-          GH_PAT_JRUEDA: ${{ secrets.GH_PAT_JRUEDA }}
-        run: |
-          git clone https://JRueda2001:${GH_PAT_JRUEDA}@github.com/GuabaBIT/choyce-api.git private_repo
-          cp private_repo/algun_archivo.svg .  # Ajusta según los archivos necesarios
-
-      - name: Update README
-        run: |
-          sed -i 's|<img width="380".*|<img width="380" src="./stats.svg" alt="GitHub Stats"/>|' README.md
-          sed -i 's|<img width="420px".*|<img width="420px" src="./streak.svg" alt="GitHub Streak Stats"/>|' README.md
-          sed -i 's|<img width="280px".*|<img width="280px" src="./langs.svg" alt="Top Languages"/>|' README.md
-
-      - name: Commit and Push Changes
-        env:
-          GH_PAT: ${{ secrets.GH_PAT }}
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git remote set-url origin https://x-access-token:${GH_PAT}@github.com/JocsanRueda/JocsanRueda.git
-          git add README.md stats.svg streak.svg langs.svg
-          git commit -m "Updated GitHub Stats in README" || echo "No changes to commit"
-          git push origin main
+          echo"${GH_PAT_JRUEDA}"
